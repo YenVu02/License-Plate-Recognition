@@ -1,18 +1,15 @@
 # License-Plate-Recognition
 License Plate Recognition For Car With Python And OpenCV
+####Nhận dạng biển số xe Trung Quốc bằng python3+opencv3, gồm thuật toán và giao diện client, chỉ có 2 file, surface.py là mã giao diện, Predict.py là mã thuật toán, giao diện không phải là trọng tâm nên là rất đơn giản để viết với tkinter.
 
-#### 用python3+opencv3做的中国车牌识别，包括算法和客户端界面，只有2个文件，surface.py是界面代码，predict.py是算法代码，界面不是重点所以用tkinter写得很简单。
+### Hướng dẫn:
+Phiên bản: python3.4.4, opencv3.4 và numpy1.14 và PIL5<br>
+Tải xuống mã nguồn, cài đặt phiên bản python của python, numpy, opencv và PIL và chạy surface.py
 
-### 使用方法：
-版本：python3.4.4，opencv3.4和numpy1.14和PIL5<br>
-下载源码，并安装python、numpy、opencv的python版、PIL，运行surface.py即可
+### Triển khai thuật toán:
+Ý tưởng của thuật toán đến từ các tài nguyên trực tuyến, đầu tiên nó sử dụng các cạnh hình ảnh và màu biển số xe để xác định vị trí biển số xe, sau đó nhận dạng các ký tự. Biển số xe được định vị theo phương pháp dự đoán, để rõ ràng, sau khi hoàn thiện mã và thử nghiệm, rất nhiều nhận xét đã được thêm vào, vui lòng tham khảo mã nguồn. Nhận dạng ký tự biển số xe cũng nằm trong phương pháp dự đoán. Vui lòng tham khảo các nhận xét trong mã nguồn. Cần lưu ý rằng thuật toán được sử dụng để nhận dạng ký tự biển số xe là SVM của opencv. Mã sử ​​dụng SVM của opencv lấy từ mẫu đi kèm với opencv. Cả lớp StatModel và lớp SVM đều là mã trong mẫu. Các mẫu đào tạo được sử dụng trong đào tạo SVM đến từ phiên bản c++ của EasyPR trên github. Do số lượng mẫu đào tạo còn hạn chế, bạn sẽ thấy có thể xảy ra lỗi trong quá trình nhận dạng ký tự biển số xe trong quá trình thử nghiệm, đặc biệt khi ký tự tiếng Trung đầu tiên xuất hiện với khả năng xảy ra lỗi cao. Trong mã nguồn, tôi đã tải các mẫu đào tạo trong EasyPR vào thư mục train\, nếu bạn muốn đào tạo lại, vui lòng giải nén trong thư mục hiện tại và xóa các tệp dữ liệu đào tạo gốc svm.dat và svmchinese.dat.
 
-### 算法实现：
-算法思想来自于网上资源，先使用图像边缘和车牌颜色定位车牌，再识别字符。车牌定位在predict方法中，为说明清楚，完成代码和测试后，加了很多注释，请参看源码。车牌字符识别也在predict方法中，请参看源码中的注释，需要说明的是，车牌字符识别使用的算法是opencv的SVM， opencv的SVM使用代码来自于opencv附带的sample，StatModel类和SVM类都是sample中的代码。SVM训练使用的训练样本来自于github上的EasyPR的c++版本。由于训练样本有限，你测试时会发现，车牌字符识别，可能存在误差，尤其是第一个中文字符出现的误差概率较大。源码中，我上传了EasyPR中的训练样本，在train\目录下，如果要重新训练请解压在当前目录下，并删除原始训练数据文件svm.dat和svmchinese.dat。
-
-##### 额外说明：算法代码只有500行，测试中发现，车牌定位算法的参数受图像分辨率、色偏、车距影响（test目录下的车牌的像素都比较小，其他图片很可能因为像素等问题识别不了，识别其他像素的车牌需要修改config文件里面的参数，此项目仅是抛砖引玉，提供一个思路）。
-##### 有任何疑问请邮件至 wzh191920@sina.com
-
-##### 界面效果：
+##### Hướng dẫn bổ sung: Mã thuật toán chỉ có 500 dòng, trong quá trình thử nghiệm nhận thấy các thông số của thuật toán định vị biển số xe bị ảnh hưởng bởi độ phân giải hình ảnh, độ lệch màu và khoảng cách xe (pixel của giấy phép) các biển số trong thư mục kiểm tra tương đối nhỏ và các hình ảnh khác có thể xảy ra. Do không thể nhận dạng được pixel và các vấn đề khác, nên việc xác định biển số xe bằng các pixel khác yêu cầu sửa đổi các tham số trong tệp cấu hình. Dự án này chỉ nhằm truyền cảm hứng cho những người khác và đưa ra ý tưởng ).
+##### Hiệu ứng giao diện:
 ![](https://github.com/wzh191920/License-Plate-Recognition/blob/master/Screenshots/3.png)
 ![](https://github.com/wzh191920/License-Plate-Recognition/blob/master/Screenshots/5.png)
