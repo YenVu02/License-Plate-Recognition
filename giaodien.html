@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kết nối tới MQTT Broker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.2.8/mqttws31.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.2.8/mqttws31.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <h1>Kết nối tới MQTT Broker</h1>
+    <div id="mqttData"></div>
+
+    <script>
+        const broker = '192.168.51.107'; // Địa chỉ IP của broker MQTT
+        const port = 1883; // Cổng kết nối MQTT
+        const client = new Paho.MQTT.Client(broker, port, 'P1');
+
+        client.onConnectionLost = function (responseObject) {
+            if (responseObject.errorCode !== 0) {
+                console.log("Kết nối đã mất: " + responseObject.errorMessage);
+            }
+        };
+
+        client.onMessageArrived = function (message) {
+            document.getElementById('mqttData').innerHTML = "Dữ liệu từ MQTT: " + message.payloadString;
+        };
+
+        client.connect({
+            onSuccess: function () {
+                console.log("Kết nối thành công");
+                client.subscribe('topic/plate_recognition'); // Chủ đề bạn muốn subscribe
+            },
+            onFailure: function (message) {
+                console.log("Kết nối thất bại: " + message.errorMessage);
+            }
+        });
+    </script>
+</body>
+</html>
