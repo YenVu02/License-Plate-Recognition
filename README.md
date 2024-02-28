@@ -11,5 +11,4 @@ Tải xuống mã nguồn, cài đặt phiên bản python của python, numpy, 
 
 ##### Hướng dẫn bổ sung: Mã thuật toán chỉ có 500 dòng, trong quá trình thử nghiệm nhận thấy các thông số của thuật toán định vị biển số xe bị ảnh hưởng bởi độ phân giải hình ảnh, độ lệch màu và khoảng cách xe (pixel của giấy phép) các biển số trong thư mục kiểm tra tương đối nhỏ và các hình ảnh khác có thể xảy ra. Do không thể nhận dạng được pixel và các vấn đề khác, nên việc xác định biển số xe bằng các pixel khác yêu cầu sửa đổi các tham số trong tệp cấu hình. Dự án này chỉ nhằm truyền cảm hứng cho những người khác và đưa ra ý tưởng ).
 ##### Hiệu ứng giao diện:
-![](https://github.com/wzh191920/License-Plate-Recognition/blob/master/Screenshots/3.png)
-![](https://github.com/wzh191920/License-Plate-Recognition/blob/master/Screenshots/5.png)
+![]((https://github.com/YenVu02/License-Plate-Recognition/blob/main/Screenshots/3.png))
